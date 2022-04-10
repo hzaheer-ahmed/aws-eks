@@ -72,7 +72,7 @@ metadata:
   namespace: grafana
 spec:
   rules:
-  - host: grafana.katp.cloud
+  - host: "grafana.${var.domain_name}"
     http:
       paths:
       - path: /

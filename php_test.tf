@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "test-php" {
+resource "kubernetes_namespace" "testphp" {
   metadata {
     name = "test-php"
   }
@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "test-php" {
 
 resource "kubernetes_manifest" "test-php" {
   depends_on = [
-    kubernetes_namespace.test-php,
+    kubernetes_namespace.testphp,
     module.eks
   ]
 manifest = yamldecode(<<YAML
@@ -34,7 +34,7 @@ YAML
 
 resource "kubernetes_manifest" "test-php-svc" {
   depends_on = [
-    kubernetes_namespace.test-php,
+    kubernetes_namespace.testphp,
     module.eks
   ]
 manifest = yamldecode(<<YAML
@@ -69,7 +69,7 @@ metadata:
   namespace: test-php
 spec:
   rules:
-  - host: test-php.katp.cloud
+  - host: "test-php.${var.domain_name}"
     http:
       paths:
       - path: /
