@@ -1,4 +1,4 @@
-# eks Terraform module
+# eks terraform module
 
 Terraform module which creates eks cluster and install grafana and test-php app.
 ### Module Usage
