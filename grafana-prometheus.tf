@@ -86,3 +86,33 @@ spec:
 YAML
 )
 }
+
+# resource "kubernetes_ingress" "garafana" {
+#   depends_on = [
+#       helm_release.grafana,
+#         module.eks
+#   ]
+#   wait_for_load_balancer = true
+#   metadata {
+#     name             = "garafana"
+#     namespace        = "grafana"
+#     annotations = {
+#       "kubernetes.io/ingress.class" = "nginx"
+#       "nginx.ingress.kubernetes.io/rewrite-target" = "/$1"
+#     }
+#   }
+#   spec {
+#     rule {
+#               host = "grafana.${var.domain_name}"
+#       http {
+#         path {
+#           path = "/*"
+#           backend {
+#             service_name = "grafana"
+#             service_port = 80
+#           }
+#         }
+#       }
+#     }
+#   }
+# }

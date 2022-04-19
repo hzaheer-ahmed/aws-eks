@@ -24,16 +24,4 @@ provider "kubernetes" {
   }
 }
 
-locals {
-  name            = "ex-${replace(basename(path.cwd), "_", "-")}"
-  cluster_version = var.cluster_version
-  region          = var.region
-
-  tags = {
-    Example    = var.cluster_name
-    GithubRepo = "terraform-aws-eks"
-    GithubOrg  = "terraform-aws-modules"
-  }
-}
-
 data "aws_caller_identity" "current" {}

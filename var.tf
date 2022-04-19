@@ -3,7 +3,7 @@ variable "ecr_name" {
 }
 
 variable "cluster_name" {
-  default = "Workhub-Staging"
+  default = "Workhub-testing"
 }
 
 variable "region" {
@@ -20,7 +20,42 @@ data "aws_availability_zones" "available" {}
 variable "domain_name" {
   default = "katp.cloud"
 }
+###########RDS###############
+variable "name" {
+  default = "instant-connect"
+}
 
+variable "db_psw" {
+  default = "Rds#admin=55"
+}
+
+variable "db_name" {
+  default = "wordpressdb"
+}
+
+variable "username" {
+  default = "tecadmin"
+}
+
+variable "port" {
+  default = "3306"
+}
+
+variable "engine" {
+  default = "mysql"
+}
+
+variable "engine_version" {
+  default = "8.0.25"
+}
+
+variable "instance_class" {
+  default = "db.t3.small"
+}
+
+variable "allocated_storage" {
+  default = 10
+}
 ###########Provider###########
 provider "aws" {
     alias = "ecr"
@@ -30,3 +65,35 @@ provider "aws" {
   region = var.region
 }
 ###########Provider###########
+locals {
+  name            = "ex-${replace(basename(path.cwd), "_", "-")}"
+  cluster_version = var.cluster_version
+  region          = var.region
+
+  tags = {
+    Example    = var.cluster_name
+    GithubRepo = "terraform-aws-eks"
+    GithubOrg  = "terraform-aws-modules"
+  }
+}
+####################
+locals {
+  vpc_name            = var.name
+}
+###########redis###############
+variable "redis_name" {
+  default = "instant-connect"
+}
+variable "node_type" {
+  default = "cache.t2.small"
+}
+variable "num_cache_nodes" {
+  default = 1
+}
+variable "redis_engine_version" {
+  default = "6.x"
+}
+###########s3###############
+variable "s3-name" {
+  default = "workhubinstantconnect"
+}

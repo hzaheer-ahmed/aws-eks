@@ -1,4 +1,7 @@
 resource "kubernetes_namespace" "testphp" {
+  depends_on = [
+    module.eks
+  ]
   metadata {
     name = "test-php"
   }
