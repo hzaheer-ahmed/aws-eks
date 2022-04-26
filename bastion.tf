@@ -16,7 +16,7 @@ module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
 
-  name                   = "Staging-Bastion"
+  name = "Staging-Bastion"
 
   ami                    = "ami-0f03c77be69621426"
   instance_type          = "t2.micro"
