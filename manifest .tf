@@ -1,3 +1,4 @@
+#######To setup test-php.example.com#######
 resource "kubernetes_namespace" "testphp" {
   depends_on = [
     module.eks
@@ -82,6 +83,34 @@ spec:
             name: hello-world
             port:
               number: 8080
+  ingressClassName: nginx
+YAML
+  )
+}
+#######To setup grafana ingress#######
+resource "kubernetes_manifest" "grafana" {
+  depends_on = [
+    helm_release.grafana,
+    module.eks
+  ]
+  manifest = yamldecode(<<YAML
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana
+  namespace: grafana
+spec:
+  rules:
+  - host: "grafana.katp.cloud"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 80
   ingressClassName: nginx
 YAML
   )
