@@ -58,8 +58,8 @@ variable "allocated_storage" {
 }
 ###########Provider###########
 provider "aws" {
-    alias = "ecr"
-    region = "us-east-1"
+  alias  = "ecr"
+  region = "us-east-1"
 }
 provider "aws" {
   region = var.region
@@ -78,7 +78,7 @@ locals {
 }
 ####################
 locals {
-  vpc_name            = var.name
+  vpc_name = var.name
 }
 ###########redis###############
 variable "redis_name" {

@@ -10,20 +10,20 @@ resource "aws_key_pair" "this" {
 }
 
 module "eks" {
-  source          = "terraform-aws-modules/eks/aws"
-  version         = "~> 18.0"
-  cluster_name    = var.cluster_name
-  cluster_version = "1.22"
+  source                          = "terraform-aws-modules/eks/aws"
+  version                         = "~> 18.0"
+  cluster_name                    = var.cluster_name
+  cluster_version                 = "1.22"
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
 
-  vpc_id = module.vpc.vpc_id
+  vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
   # EKS Managed Node Group(s)
   eks_managed_node_group_defaults = {
-    disk_size      = 50
-    instance_types = ["t2.small"]
+    disk_size                  = 50
+    instance_types             = ["t2.small"]
     iam_role_attach_cni_policy = true
   }
 
@@ -34,9 +34,9 @@ module "eks" {
       # so we need to disable it to use the default template provided by the AWS EKS managed node group service
       create_launch_template = false
       launch_template_name   = ""
-      min_size     = 2
-      max_size     = 3
-      desired_size = 2
+      min_size               = 2
+      max_size               = 3
+      desired_size           = 2
 
       # Remote access cannot be specified with a launch template
       remote_access = {
@@ -44,7 +44,7 @@ module "eks" {
         source_security_group_ids = [aws_security_group.remote_access.id]
       }
     }
-}
+  }
 }
 
 data "aws_eks_cluster" "cluster" {
