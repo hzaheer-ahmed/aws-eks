@@ -22,10 +22,10 @@ resource "aws_security_group" "remote_access" {
   tags = local.tags
 }
 
-resource aws_security_group "mysql" {
- depends_on = [
-  module.vpc
- ]
+resource "aws_security_group" "mysql" {
+  depends_on = [
+    module.vpc
+  ]
   name        = "${var.name}-db"
   description = "managed by terrafrom for db servers"
   vpc_id      = module.vpc.vpc_id
