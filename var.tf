@@ -3,7 +3,7 @@ variable "ecr_name" {
 }
 
 variable "cluster_name" {
-  default = "Workhub-Staging"
+  default = "workhub-staging"
 }
 
 variable "region" {
