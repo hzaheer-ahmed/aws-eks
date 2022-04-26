@@ -64,7 +64,7 @@ provider "aws" {
 provider "aws" {
   region = var.region
 }
-###########Provider###########
+###########Provider############
 locals {
   name            = "ex-${replace(basename(path.cwd), "_", "-")}"
   cluster_version = var.cluster_version
