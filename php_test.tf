@@ -12,7 +12,7 @@ resource "kubernetes_manifest" "test-php" {
     kubernetes_namespace.testphp,
     module.eks
   ]
-manifest = yamldecode(<<YAML
+  manifest = yamldecode(<<YAML
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -32,7 +32,7 @@ spec:
       - image: okteto/hello-world:php
         name: hello-world
 YAML
-)
+  )
 }
 
 resource "kubernetes_manifest" "test-php-svc" {
@@ -40,7 +40,7 @@ resource "kubernetes_manifest" "test-php-svc" {
     kubernetes_namespace.testphp,
     module.eks
   ]
-manifest = yamldecode(<<YAML
+  manifest = yamldecode(<<YAML
 apiVersion: v1
 kind: Service
 metadata:
@@ -56,7 +56,7 @@ spec:
   selector:
     app: hello-world
 YAML
-)
+  )
 }
 
 resource "kubernetes_manifest" "test-php-ing" {
@@ -64,7 +64,7 @@ resource "kubernetes_manifest" "test-php-ing" {
     kubernetes_manifest.test-php-svc,
     module.eks
   ]
-manifest = yamldecode(<<YAML
+  manifest = yamldecode(<<YAML
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -84,5 +84,5 @@ spec:
               number: 8080
   ingressClassName: nginx
 YAML
-)
+  )
 }

@@ -73,19 +73,19 @@ module "db5" {
   depends_on = [
     aws_security_group.mysql
   ]
-  source  = "terraform-aws-modules/rds/aws"
+  source = "terraform-aws-modules/rds/aws"
 
   identifier = "${var.name}-v5-7"
 
-  engine            = var.engine
-  engine_version    = "5.7.33"
-  instance_class    = var.instance_class
-  allocated_storage = var.allocated_storage
+  engine                 = var.engine
+  engine_version         = "5.7.33"
+  instance_class         = var.instance_class
+  allocated_storage      = var.allocated_storage
   create_random_password = false
 
-  db_name  = var.db_name
-  username = var.username
-  password = var.db_psw
+  db_name           = var.db_name
+  username          = var.username
+  password          = var.db_psw
   availability_zone = "eu-central-1b"
 
 
@@ -113,11 +113,11 @@ module "db5" {
 
   parameters = [
     {
-      name = "character_set_client"
+      name  = "character_set_client"
       value = "utf8mb4"
     },
     {
-      name = "character_set_server"
+      name  = "character_set_server"
       value = "utf8mb4"
     }
   ]
