@@ -22,7 +22,7 @@ variable "domain_name" {
 }
 ###########RDS###############
 variable "name" {
-  default = "instant-connect"
+  default = "workhub-staging"
 }
 
 variable "db_psw" {
@@ -82,7 +82,7 @@ locals {
 }
 ###########redis###############
 variable "redis_name" {
-  default = "instant-connect"
+  default = "workhub-staging"
 }
 variable "node_type" {
   default = "cache.t2.small"
@@ -96,4 +96,11 @@ variable "redis_engine_version" {
 ###########s3###############
 variable "s3-name" {
   default = "workhubinstantconnect"
+}
+#######Grafana#######
+variable "grafana_user" {
+  default = "admin"
+}
+variable "grafana_pwd" {
+  default = "Test123"
 }

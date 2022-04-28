@@ -39,8 +39,8 @@ data "template_file" "grafana_values" {
 
   vars = {
     GRAFANA_SERVICE_ACCOUNT = "grafana"
-    GRAFANA_ADMIN_USER      = "admin"
-    GRAFANA_ADMIN_PASSWORD  = "Test123"
+    GRAFANA_ADMIN_USER      = var.grafana_user
+    GRAFANA_ADMIN_PASSWORD  = var.grafana_pwd
     PROMETHEUS_SVC          = "${helm_release.prometheus.name}-server"
     NAMESPACE               = "grafana"
   }
