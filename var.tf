@@ -1,5 +1,5 @@
 variable "ecr_name" {
-  default = "workhub"
+  default = "workhub-staging"
 }
 
 variable "cluster_name" {
@@ -22,7 +22,7 @@ variable "domain_name" {
 }
 ###########RDS###############
 variable "name" {
-  default = "instant-connect"
+  default = "workhub-staging"
 }
 
 variable "db_psw" {
@@ -82,7 +82,7 @@ locals {
 }
 ###########redis###############
 variable "redis_name" {
-  default = "instant-connect"
+  default = "workhub-staging"
 }
 variable "node_type" {
   default = "cache.t2.small"
@@ -95,5 +95,6 @@ variable "redis_engine_version" {
 }
 ###########s3###############
 variable "s3-name" {
-  default = "workhubinstantconnect"
+  default = "
+  hub-staging-bucket"
 }
