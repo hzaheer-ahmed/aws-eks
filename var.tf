@@ -95,7 +95,7 @@ variable "redis_engine_version" {
 }
 ###########s3###############
 variable "s3-name" {
-  default = "workhubinstantconnect"
+  default = "workhub-staging"
 }
 #######Grafana#######
 variable "grafana_user" {
